@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "build:client": "esbuild src/pages/*.tsx --bundle --outdir=static/js",
+    "watch:client": "esbuild src/pages/*.tsx --bundle --watch --outdir=static/pages-client-js",
+    "watch:server": "tsx watch src/server.tsx",
+    "serve": "tsx src/server.tsx",
+    "dev": "concurrently \"npm run watch:server\" \"npm run watch:client\""
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "@hono/zod-validator": "^0.2.1",
+    "hono": "^4.4.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "@types/node": "^20.11.17",
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.21.4",
+    "tsx": "^4.7.1"
+  }
+}

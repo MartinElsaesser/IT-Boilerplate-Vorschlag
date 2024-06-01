@@ -1,0 +1,38 @@
+import { getCookie, getSignedCookie, setCookie, setSignedCookie, deleteCookie } from 'hono/cookie'
+
+function genId() {
+    return (
+        String('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx')
+    ).replace(/[xy]/g, (character) => {
+        const random = (Math.random() * 16) | 0;
+        const value = character === "x" ? random : (random & 0x3) | 0x8;
+
+        return value.toString(16);
+    });
+};
+
+app.use(async (c, next) => {
+	const db = await DB();
+	
+
+	const SECRET = 'secret ingredient'
+	const cookieName = "session"
+	let sessionID: string;
+	const cookie = await getSignedCookie(c, SECRET,cookieName);
+
+	if(!cookie) {
+		sessionID = genId()
+		const session = await db.data.sessions.push({ id: 1, sessionID: sessionID, data: {}});
+		console.log(session);
+		
+
+	} else {
+		sessionID = cookie;
+		const session =  db.data.sessions.find((session)=>session.sessionID==sessionID);
+		console.log(session)
+	}
+
+
+	await setSignedCookie(c, cookieName, sessionID, SECRET);
+  await next()
+})

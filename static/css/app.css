@@ -1,0 +1,28 @@
+.div-icon {
+	width: 37px;
+	height: 37px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.div-hover:hover {
+	cursor: pointer;
+	filter: brightness(0.9);
+	transition: filter 100ms ease-in-out;
+
+}
+
+.grow {
+	display: grid;
+	grid-template-rows: 1fr;
+	transition: grid-template-rows ease-in-out 0.2s;
+}
+
+.grow > div {
+	overflow: hidden;
+}
+
+.grow-hidden {
+	grid-template-rows: 0fr;
+}
