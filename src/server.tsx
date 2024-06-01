@@ -1,14 +1,16 @@
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { Hono } from 'hono'
-import baseRouter from "./routes/baseRouter"
+import advancedRouter from "./routes/advancedRouter"
+import basicRouter from "./routes/basicRouter"
 
 const app = new Hono()
 
 // serve static files
 app.use("/static/*", serveStatic({ root: "./" }))
 
-app.route("/", baseRouter)
+app.route("/advanced", advancedRouter)
+app.route("/", basicRouter)
 
 // spin up server
 serve(
