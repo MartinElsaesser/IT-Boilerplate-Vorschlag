@@ -1,8 +1,10 @@
+
+// app dependencies
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { Hono } from 'hono'
-import advancedRouter from "./routes/advancedRouter"
-import basicRouter from "./routes/basicRouter"
+import advancedRouter from "./routers/advancedRouter"
+import basicRouter from "./routers/basicRouter"
 
 const app = new Hono()
 

@@ -14,5 +14,5 @@
 		"noEmit": true,
 		"allowImportingTsExtensions": true,
   },
-	"include": ["src/**/*.tsx", "src/**/*.ts","src/**/*.mdx", "src/client/homePage.ts"]
+	"include": ["src/**/*.tsx", "src/**/*.ts","src/**/*.mdx", "src/client/homePage.ts", "server.tsx"]
 }
