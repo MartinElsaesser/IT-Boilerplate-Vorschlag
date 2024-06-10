@@ -1,4 +1,4 @@
-import { Lucia } from "lucia";
+import { Lucia, TimeSpan } from "lucia";
 import { NodePostgresAdapter } from "@lucia-auth/adapter-postgresql";
 import { db, pool } from "./db";
 import { User } from "./schema/types";
@@ -13,9 +13,10 @@ export const lucia = new Lucia(adapter, {
 		expires: true,
 		attributes: {
 			// set to `true` when using HTTPS
-			secure: process.env.NODE_ENV === "production"
+			secure: true,
 		}
 	},
+	sessionExpiresIn: new TimeSpan(30, "d"),
 	getUserAttributes(dbUser) {
 		return {
 			email: dbUser.email,
