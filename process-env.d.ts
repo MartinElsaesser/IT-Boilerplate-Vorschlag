@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      DB_URL: string;
+      DATABASE_URL: string;
       // add more environment variables and their types here
     }
   }
